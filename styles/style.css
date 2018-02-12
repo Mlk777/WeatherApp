@@ -1,0 +1,215 @@
+html {
+  height: 100vh;
+}
+
+body {
+  overflow: hidden;
+}
+
+#curtain {
+  z-index: 1;
+  background-color: red;
+  background-image: repeating-linear-gradient(
+    white,
+    Azure 5px,
+    #d2b48c 35px,
+    black 3px,
+    white 70px
+  );
+  height: 100vh;
+  color: red;
+  left: 0;
+  top: 0;
+  width: 100%;
+  transform: translateY(-100%);
+  transition: transform 1500ms ease-in;
+  position: fixed;
+}
+
+.curtain-on #curtain {
+  z-index: 1;
+  transform: translateY(0%);
+  transition: transform 3000ms ease-out;
+}
+
+.curtain-info {
+  left: 50%;
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.curtain-info p {
+  font-size: 2em;
+  font-weight: 700;
+  color: #666;
+}
+
+.curtain-info img {
+  width: 20%;
+  opacity: 0.5;
+}
+
+canvas {
+  display: block;
+}
+
+#snowfall {
+  width: 100vw;
+  height: 100vh;
+}
+
+#rainfall {
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+  background: #eee;
+}
+
+#drizzle {
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+  background: #eee;
+}
+
+#clearSky {
+  background-image: url("http://www.solarnews.es/wp-content/uploads/2015/10/back10.jpg");
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+}
+
+#clouds {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background: url("http://www.pngmart.com/files/1/Clouds-PNG-HD.png");
+  -webkit-animation: breath 60s linear infinite alternate;
+  animation: breath 60s linear infinite alternate;
+  width: 100vw;
+  height: 100vh;
+}
+
+@-webkit-keyframes breath {
+  0% {
+    background-size: 95% auto;
+  }
+  25% {
+    background-size: 110% auto;
+  }
+  50% {
+    background-size: 125% auto;
+  }
+  100% {
+    background-size: 100% auto;
+  }
+}
+
+@keyframes breath {
+  0% {
+    background-size: 95% auto;
+  }
+  25% {
+    background-size: 110% auto;
+  }
+  50% {
+    background-size: 125% auto;
+  }
+  100% {
+    background-size: 100% auto;
+  }
+}
+
+#thunderStorm {
+  background-image: url("https://c1.staticflickr.com/8/7282/9263924434_aba98b6249_b.jpg");
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+}
+
+#inTheMist {
+  background-image: url("http://eskipaper.com/images/hazy-wallpaper-3.jpg");
+  background-position: bottom left;
+  width: 100vw;
+  height: 100vh;
+}
+
+#card {
+  width: 350px;
+  height: 500px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 0;
+  margin: -250px 0 0 -175px;
+  border-radius: 10px;
+  box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  background-size: 350px 500px;
+}
+
+#cardOpacity {
+  width: 350px;
+  height: 500px;
+  background: rgba(84, 104, 110, 0.28);
+  z-index: -1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -250px 0 0 -175px;
+  border-radius: 10px;
+}
+
+.wrapper {
+  display: grid;
+  grid-gap: 25px;
+  margin: auto;
+  grid-template-columns: 1fr;
+  grid-template-areas: "m m" "c c" "t t" "tmm tmm" "w w" "s s";
+  padding-top: 20px;
+}
+
+.wrapper hr {
+  border: 0;
+  height: 1px;
+  background-image: -webkit-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+  width: 60%;
+  opacity: 0.3;
+}
+
+#main {
+  grid-area: m;
+}
+
+#cityName {
+  grid-area: c;
+}
+
+#temperature {
+  grid-area: t;
+}
+
+#temperatureMinMax {
+  grid-area: tmm;
+}
+
+#wind {
+  grid-area: w;
+}
+
+#sunset {
+  grid-area: s;
+}
+
+.wrapper h1 {
+  text-align: center;
+  color: #9cc9e3;
+  font-weight: 600;
+}
+
+p {
+  color: rgb(223, 6, 6);
+  font-size: 1.125em;
+  font-weight: 900;
+}

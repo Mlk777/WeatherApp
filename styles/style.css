@@ -7,8 +7,6 @@ body {
 }
 
 #curtain {
-  z-index: 1;
-  background-color: red;
   background-image: repeating-linear-gradient(
     white,
     Azure 5px,

@@ -3,26 +3,29 @@ function getWeather() {
     //Getting longitude and latitude
     var latitude = position.coords.latitude;
     var longitude = position.coords.longitude;
-    console.log(latitude);
-    console.log(longitude);
 
     //Building date and Adding 0 to the date if minutes < 10
     var d = new Date();
+
+    //Month goes from 0 to 11 so if month is January add 0 in front
     var month = d.getMonth();
     if (month == 0) {
       month = "01";
     }
+
     var today = `${d.getFullYear()}-${month}-${d.getUTCDate()}`;
-    console.log(today);
+    console.log(`la date d'aujourd'hui ${today}`);
     var hours = d.getHours();
     var time = new moment().format("HH:mm:ss");
     console.log(time);
+
     var minutes = d.getMinutes();
     if (minutes < 10) minutes += "0";
     console.log(minutes);
 
     //Building api full url depending on latitude and longitude
     var url = apiUrl + "lat=" + latitude + "&lon=" + longitude;
+    //For testing : var url = "https://fcc-weather-api.glitch.me/api/current?lat=69.142596&lon=26.977247";
     console.log(url);
 
     $.getJSON(url, function(val) {
@@ -96,7 +99,6 @@ function getWeather() {
       $("#wind").html(`The wind blows at ${wind}km/h`);
 
       function displayMessage() {
-        //Sooooo baad
         var hoursArray = [
           ["05", "06", "07", "08", "09", "10", "11"],
           ["12", "13", "14", "15", "16", "17", "18"],
@@ -107,19 +109,19 @@ function getWeather() {
           for (j = 0; j < tabElement.length; j++) {
             if (d.getHours() == hoursArray[0][j]) {
               $("#cityName").html(
-                `Good Morning from ${cityName} ! It's ${hours}h${minutes}`
+                `Good Morning ${cityName} ! It's ${hours}h${minutes}`
               );
               //console.log("good morning");
               return;
             } else if (d.getHours() == hoursArray[1][j]) {
               $("#cityName").html(
-                `Good Afternoon from ${val.name} ! It's ${hours}h${minutes}`
+                `Good Afternoon ${val.name} ! It's ${hours}h${minutes}`
               );
               //console.log("good afternoon");
               return;
             } else if (d.getHours() == hoursArray[2][j]) {
               $("#cityName").html(
-                `Good Evening from ${cityName} ! It's ${hours}h${minutes}`
+                `Good Evening ${cityName} ! It's ${hours}h${minutes}`
               );
               //console.log("good evening");
               return;
@@ -130,7 +132,6 @@ function getWeather() {
       /*var morning = ["05", "06", "07", "08", "09", "10", "11"];
           var afternoon = ["12", "13", "14", "15", "16", "17", "18"];
           var evening = ["19", "20", "21", "22", "23", "00", "01", "02", "03", "04"];
-
           for (var i = 0; i < morning.length; i++) {
             if (d.getHours() == morning[i]) {
               $("#cityName").html(`Good Morning from ${cityName} ! It's ${hours}h${minutes}`);
@@ -150,21 +151,23 @@ function getWeather() {
 
       function clearSky() {
         var imageURL =
-          "http://www.solarnews.es/wp-content/uploads/2015/10/back10.jpg"; // or http://res.cloudinary.com/detqxj5bf/image/upload/v1504020580/WWWeather/clearsky.png
-        $(".weatherInfo").css("color", "black");
-        $("p").css("color", "#343a40");
+          "http://www.solarnews.es/wp-content/uploads/2015/10/back10.jpg";
+        $(".wrapper p").css("color", "#555555e6");
+        $(".wrapper h1").css("color", "#333333b5");
         $("body").attr("id", "clearSky");
       } //End function
       function inTheMist() {
         $("body").attr("id", "inTheMist");
-        $("h1").css("color", "#3c4e47");
-        $("p").css("color", "#343a40");
+        $(".wrapper h1").css("color", "#343a404f");
+        $(".wrapper p").css("color", "#3333339c");
       } //End function
       function makeItSnow() {
-        $("body").attr("id", "snowfall");
+        $("html").append("<div id='snowfall'></div>");
+        $("html").attr("id", "snowfall");
+        //$("body").attr("id", "snowfall");
         $("body").css("background-color", "lavender");
-        $("h1").css("color", "#607D8B");
-        $("p").css("color", "#03A9F4");
+        $(".wrapper h1").css("color", "#222");
+        $(".wrapper p").css("color", "#7995b1");
         particlesJS("snowfall", {
           particles: {
             number: {
@@ -208,10 +211,12 @@ function getWeather() {
         });
       } //End function
       function makeItRain() {
-        $("body").attr("id", "rainfall");
-        $("body").css("background-color", "#f8f9fa");
-        $("p").css("color", "#17a2b8");
-        $("h1").css("color", "#6b93bb");
+        $("html").append("<div id='rainfall'></div>");
+        $("html").attr("id", "rainfall");
+        //$("body").attr("id", "rainfall");
+        $("body").css("background-color", "lavender");
+        $(".wrapper p").css("color", "#7995b1");
+        $(".wrapper h1").css("color", "#222");
         particlesJS("rainfall", {
           particles: {
             number: {
@@ -247,6 +252,9 @@ function getWeather() {
               direction: "bottom",
               straight: true,
               out_mode: "out"
+            },
+            line_linked: {
+              enable: false
             }
           },
           interactivity: {
@@ -255,21 +263,28 @@ function getWeather() {
         });
       } //End function
       function Clouds() {
+        //$("body").attr("id", "clouds");
         $("body").append("<div id='clouds'></div>");
-        $("p").css("color", "#0e0e0e");
-        $("h1").css("color", "#17a2b8");
+        $(".wrapper h1").css("color", "#dc35454f");
+        $("p").css("color", "hsla(0, 0%, 40%, 0.92)");
+        $(".wrapper hr").css(
+          "background-image",
+          "-webkit-linear-gradient(left, #dc3545, #dc35455c, #dc3545"
+        );
       } //End function
       function Drizzle() {
-        $("body").attr("id", "drizzle");
-        $("p").css("color", "#343a40");
-        $("h1").css("color", "#495057");
+        $("html").append("<div id='drizzle'></div>");
+        $("html").attr("id", "drizzle");
+        //$("body").attr("id", "drizzle");
+        $(".wrapper p").css("color", "#2b294a");
+        $(".wrapper h1").css("color", "rgba(0, 0, 0, 0.16862745098039217)");
         particlesJS("drizzle", {
           particles: {
             number: {
-              value: 90,
+              value: 150,
               density: {
                 enable: false,
-                value_area: 200
+                value_area: 2000
               }
             },
             shape: {
@@ -285,24 +300,31 @@ function getWeather() {
             },
             size: {
               value: 215,
-              random: true
+              random: false
             },
             move: {
               enable: true,
-              speed: 1.5,
+              speed: 0.3,
               direction: "right",
-              straight: true,
+              straight: false,
               out_mode: "out"
             }
           },
           interactivity: {
-            detect_on: "canvas"
+            detect_on: "canvas",
+            events: {
+              onclick: {
+                enable: false,
+                mode: "repulse"
+              }
+            }
           }
         });
       } //End function
       function thunderStorm() {
         $("body").attr("id", "thunderStorm");
-        $("p").css("color", "#333");
+        $(".wrapper h1").css("color", "rgba(52, 58, 64, 0.37)");
+        $(".wrapper p").css("color", "#343a40");
       } //End function
 
       function displayBackground() {
@@ -366,42 +388,17 @@ function getWeather() {
   navigator.geolocation.getCurrentPosition(getPosition, showError);
 } //End function getWeather()
 
-function curtainCall() {
-  $(window).on("scroll", function() {
-    if ($(this).scrollTop() <= 0) {
-      $("html").addClass("curtain-on");
-    } else {
-      $("html").removeClass("curtain-on");
-    }
-  });
-}
-
-function curtainButton() {
-  $(".curtainButton").click(function(event) {
-    $("#card")
-      .hide()
-      .delay(1500)
-      .fadeIn(1000);
-    $("html").removeClass("curtain-on");
-  });
-}
-
-function returnToBed() {
-  $("#returnToBed").click(function() {
-    $("html").addClass("curtain-on");
-  });
-}
-
 $(document).ready(function() {
-  curtainButton();
-  returnToBed();
-  curtainCall();
-  /*makeItRain();
-  Drizzle();
-  Clouds();
+  $("#card")
+    .hide()
+    .delay(1500)
+    .fadeIn(1000);
+  //makeItRain();
+  //Drizzle();
+  /*Clouds();
   clearSky();
   thunderStorm();
-  inTheMist();
-  makeItSnow();*/
+  inTheMist();*/
+  //makeItSnow();
   getWeather();
 });

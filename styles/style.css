@@ -6,7 +6,7 @@ body {
   overflow: hidden;
 }
 
-#curtain {
+/*#curtain {
   background-image: repeating-linear-gradient(
     white,
     Azure 5px,
@@ -47,75 +47,98 @@ body {
 .curtain-info img {
   width: 20%;
   opacity: 0.5;
-}
+}*/
 
 canvas {
   display: block;
+  position: absolute;
+  top: 0;
+  z-index: -2;
 }
 
 #snowfall {
+  position: absolute;
   width: 100vw;
   height: 100vh;
+  background: #eee;
+  background-size: cover;
+  z-index: -3;
 }
 
 #rainfall {
-  background-size: cover;
+  position: absolute;
   width: 100vw;
   height: 100vh;
   background: #eee;
+  background-size: cover;
+  z-index: -2;
 }
 
 #drizzle {
-  background-size: cover;
+  position: absolute;
   width: 100vw;
   height: 100vh;
   background: #eee;
+  background-size: cover;
+  z-index: -2;
 }
 
 #clearSky {
-  background-image: url("http://www.solarnews.es/wp-content/uploads/2015/10/back10.jpg");
+  background-image: url("https://wallpapersite.com/images/wallpapers/sunset-2560x1440-clear-sky-hd-5168.jpg");
   background-size: cover;
   width: 100vw;
   height: 100vh;
 }
 
 #clouds {
+  background-image: url("https://s.marketwatch.com/public/resources/MWimages/MW-DY125_clouds_ZG_20151029153158.jpg");
   background-size: cover;
-  background-repeat: no-repeat;
-  background: url("http://www.pngmart.com/files/1/Clouds-PNG-HD.png");
   -webkit-animation: breath 60s linear infinite alternate;
   animation: breath 60s linear infinite alternate;
   width: 100vw;
   height: 100vh;
+  position: absolute;
+  background-repeat: no-repeat;
+  z-index: -2;
+  top: 0;
+  left: 0
 }
 
 @-webkit-keyframes breath {
   0% {
-    background-size: 95% auto;
+    -webkit-transform: scale(1);
+    transform: scale(1);
   }
   25% {
-    background-size: 110% auto;
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
   }
   50% {
-    background-size: 125% auto;
+    -webkit-transform: scale(1.5);
+    transform: scale(1.5);
   }
   100% {
-    background-size: 100% auto;
+    -webkit-transform: scale(1.8);
+    transform: scale(1.8);
   }
 }
 
 @keyframes breath {
   0% {
-    background-size: 95% auto;
+    -webkit-transform: scale(1);
+    transform: scale(1);
   }
   25% {
-    background-size: 110% auto;
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
   }
   50% {
-    background-size: 125% auto;
+    -webkit-transform: scale(1.5);
+    transform: scale(1.5);
   }
   100% {
-    background-size: 100% auto;
+    -webkit-transform: scale(1.8);
+    transform: scale(1.8);
   }
 }
 
@@ -173,7 +196,8 @@ canvas {
   height: 1px;
   background-image: -webkit-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
   width: 60%;
-  opacity: 0.3;
+  opacity: 0.2;
+  margin-bottom: 0;
 }
 
 #main {
@@ -201,13 +225,18 @@ canvas {
 }
 
 .wrapper h1 {
+  font-family: 'Signika', sans-serif;
   text-align: center;
-  color: #9cc9e3;
+  color: black;
   font-weight: 600;
+  opacity: 0.6;
+  text-shadow: 1px 0.5px 6px #1e1e1e;
+  margin-bottom: 0;
 }
 
 p {
   color: rgb(223, 6, 6);
   font-size: 1.125em;
   font-weight: 900;
+  font-family: 'Ubuntu', sans-serif;
 }

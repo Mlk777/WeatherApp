@@ -6,49 +6,6 @@ body {
   overflow: hidden;
 }
 
-/*#curtain {
-  background-image: repeating-linear-gradient(
-    white,
-    Azure 5px,
-    #d2b48c 35px,
-    black 3px,
-    white 70px
-  );
-  height: 100vh;
-  color: red;
-  left: 0;
-  top: 0;
-  width: 100%;
-  transform: translateY(-100%);
-  transition: transform 1500ms ease-in;
-  position: fixed;
-}
-
-.curtain-on #curtain {
-  z-index: 1;
-  transform: translateY(0%);
-  transition: transform 3000ms ease-out;
-}
-
-.curtain-info {
-  left: 50%;
-  position: absolute;
-  text-align: center;
-  top: 50%;
-  transform: translateX(-50%) translateY(-50%);
-}
-
-.curtain-info p {
-  font-size: 2em;
-  font-weight: 700;
-  color: #666;
-}
-
-.curtain-info img {
-  width: 20%;
-  opacity: 0.5;
-}*/
-
 canvas {
   display: block;
   position: absolute;

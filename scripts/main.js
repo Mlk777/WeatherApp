@@ -329,6 +329,7 @@ function getWeather() {
 
       function displayBackground() {
         var weather = val.weather[0].main;
+        console.log(weather);
         switch (weather) {
           case "Clear":
             clearSky();

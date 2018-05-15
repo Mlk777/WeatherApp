@@ -1,156 +1,199 @@
-:root {
-  --offline-red: #f11010;
-  --online-green: #009102;
-  --signboard-black: #0000007a;
-  --tooltip-color: Linen;
+html {
+  height: 100vh;
 }
 
-html {
-  width: 100vw;
-  height: 100vh;
+body {
   overflow: hidden;
 }
 
-.background-image {
+canvas {
+  display: block;
+  position: absolute;
   top: 0;
-  left: 0;
-  position: fixed;
-  height: 100vh;
+  z-index: -2;
+}
+
+#snowfall {
+  position: absolute;
   width: 100vw;
-  background: url("http://трикота.бел/wp-content/uploads/2017/11/fon-nebo-trava-27511.jpg")
-    no-repeat center bottom;
+  height: 100vh;
+  background: #eee;
   background-size: cover;
   z-index: -3;
 }
 
-.page {
+#rainfall {
   position: absolute;
-  top: 0;
-  left: 0;
   width: 100vw;
   height: 100vh;
+  background: #eee;
+  background-size: cover;
   z-index: -2;
 }
 
-.trunk {
+#drizzle {
   position: absolute;
-  top: 20%;
+  width: 100vw;
+  height: 100vh;
+  background: #eee;
+  background-size: cover;
+  z-index: -2;
+}
+
+#clearSky {
+  background-image: url("https://wallpapersite.com/images/wallpapers/sunset-2560x1440-clear-sky-hd-5168.jpg");
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+}
+
+#clouds {
+  background-image: url("https://s.marketwatch.com/public/resources/MWimages/MW-DY125_clouds_ZG_20151029153158.jpg");
+  background-size: cover;
+  -webkit-animation: breath 60s linear infinite alternate;
+  animation: breath 60s linear infinite alternate;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  background-repeat: no-repeat;
+  z-index: -2;
+  top: 0;
+  left: 0
+}
+
+@-webkit-keyframes breath {
+  0% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+  25% {
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+  }
+  50% {
+    -webkit-transform: scale(1.5);
+    transform: scale(1.5);
+  }
+  100% {
+    -webkit-transform: scale(1.8);
+    transform: scale(1.8);
+  }
+}
+
+@keyframes breath {
+  0% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+  25% {
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+  }
+  50% {
+    -webkit-transform: scale(1.5);
+    transform: scale(1.5);
+  }
+  100% {
+    -webkit-transform: scale(1.8);
+    transform: scale(1.8);
+  }
+}
+
+#thunderStorm {
+  background-image: url("https://c1.staticflickr.com/8/7282/9263924434_aba98b6249_b.jpg");
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+}
+
+#inTheMist {
+  background-image: url("http://eskipaper.com/images/hazy-wallpaper-3.jpg");
+  background-position: bottom left;
+  width: 100vw;
+  height: 100vh;
+}
+
+#card {
+  width: 350px;
+  height: 500px;
+  position: absolute;
+  top: 50%;
   left: 50%;
-  right: 50%;
-  width: 40px;
-  height: 800px;
-  bottom: 0;
-  background-color: #8c673a;
-  z-index: -2;
-  border-radius: 3px;
-  box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.5),
-    0px 2px 2px 0px rgba(255, 255, 255, 0.5) inset;
+  z-index: 0;
+  margin: -250px 0 0 -175px;
+  border-radius: 10px;
+  box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  background-size: 350px 500px;
 }
 
-#arrowOnline {
+#cardOpacity {
+  width: 350px;
+  height: 500px;
+  background: rgba(84, 104, 110, 0.28);
+  z-index: -1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -250px 0 0 -175px;
+  border-radius: 10px;
+}
+
+.wrapper {
   display: grid;
-  align-items: center;
-  justify-content: center;
-  margin: 15px 0px 5px 0px;
-  right: 35px;
-  width: 175px;
-  height: 30px;
-  position: relative;
-  background: var(--online-green);
-  z-index: 1;
+  grid-gap: 25px;
+  margin: auto;
+  grid-template-columns: 1fr;
+  grid-template-areas: "m m" "c c" "t t" "tmm tmm" "w w" "s s";
+  padding-top: 20px;
 }
 
-#arrowOnline:after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 0;
-  height: 0;
-  border-left: 5px solid var(--online-green);
-  border-top: 15px solid transparent;
-  border-bottom: 15px solid transparent;
+.wrapper hr {
+  border: 0;
+  height: 1px;
+  background-image: -webkit-linear-gradient(left, #f0f0f0, #8c8b8b, #f0f0f0);
+  width: 60%;
+  opacity: 0.2;
+  margin-bottom: 0;
 }
 
-#arrowOnline:before {
-  content: "";
-  position: absolute;
-  right: -20px;
-  bottom: 0;
-  width: 0;
-  height: 0;
-  border-left: 20px solid var(--online-green);
-  border-top: 15px solid transparent;
-  border-bottom: 15px solid transparent;
+#main {
+  grid-area: m;
 }
 
-#arrowOffline {
-  display: grid;
-  align-items: center;
-  justify-content: center;
-  margin: 15px 0px 5px 0px;
-  right: 110px;
-  width: 175px;
-  height: 30px;
-  position: relative;
-  background: var(--offline-red);
-  z-index: 1;
+#cityName {
+  grid-area: c;
 }
 
-#arrowOffline:after {
-  content: "";
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  width: 0;
-  height: 0;
-  border-right: 5px solid transparent;
-  border-top: 15px solid transparent;
-  border-bottom: 15px solid transparent;
+#temperature {
+  grid-area: t;
 }
 
-#arrowOffline:before {
-  content: "";
-  position: absolute;
-  left: -20px;
-  bottom: 0;
-  width: 0;
-  height: 0;
-  border-right: 20px solid var(--offline-red);
-  border-top: 15px solid transparent;
-  border-bottom: 15px solid transparent;
+#temperatureMinMax {
+  grid-area: tmm;
 }
 
-.trunk a:link,
-a:visited,
-a:hover,
-a:active {
-  color: white;
-  text-decoration: none;
+#wind {
+  grid-area: w;
 }
 
-.tooltip.right > .tooltip-arrow {
-  border-right-color: var(--tooltip-color);
-  padding-left: 17px;
+#sunset {
+  grid-area: s;
 }
 
-.tooltip > .tooltip-inner {
-  background-color: var(--tooltip-color);
-  text-shadow: 0 1px 1px #000;
-  font-weight: normal;
-  font-size: fit-width;
-  font-family: "Merriweather Sans", sans-serif;
-  max-width: none;
-  color: Teal;
-  white-space: pre-wrap;
+.wrapper h1 {
+  font-family: 'Signika', sans-serif;
+  text-align: center;
+  color: black;
+  font-weight: 600;
+  opacity: 0.6;
+  text-shadow: 1px 0.5px 6px #1e1e1e;
+  margin-bottom: 0;
 }
 
-.tooltip.right {
-  padding-left: 22px;
-}
-
-#channel {
-  font-family: "Love Ya Like A Sister", cursive;
-  color: var(--signboard-black);
-  font-size: 1.5em;
+p {
+  color: rgb(223, 6, 6);
+  font-size: 1.125em;
+  font-weight: 900;
+  font-family: 'Ubuntu', sans-serif;
 }

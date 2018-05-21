@@ -28,7 +28,7 @@ function getWeather() {
     //For testing : var url = "https://fcc-weather-api.glitch.me/api/current?lat=69.142596&lon=26.977247";
     console.log(url);
 
-    $.getJSON(url, function(val) {
+    $.getJSON(url, function (val) {
       //Toggling temperature
       function toggleTemperature() {
         //init var
@@ -50,7 +50,7 @@ function getWeather() {
         );
 
         //click function current temperature
-        $("#temperature").click(function() {
+        $("#temperature").click(function () {
           if (celsius) {
             $("#temperature").html(
               `The current temperature is ${temperatureFarenheit}°F`
@@ -64,7 +64,7 @@ function getWeather() {
           }
         });
         //click function range temperature
-        $("#temperatureMinMax").click(function() {
+        $("#temperatureMinMax").click(function () {
           if (celsiusMinMax) {
             $("#temperatureMinMax").html(
               `Temperature beetween ${tempMinFarenheit}°F and ${tempMaxFarenheit}°F today`
@@ -92,7 +92,7 @@ function getWeather() {
       var beforeSunset;
 
       if (Math.abs(diff) <= 30) {
-        beforeSunset = diff;
+        beforeSunset = Math.abs(diff);
         $("#sunset").html(`The sun will set in ${beforeSunset} minutes`);
       }
 
@@ -229,8 +229,7 @@ function getWeather() {
             shape: {
               type: "image",
               image: {
-                src:
-                  "http://cdn.mysitemyway.com/etc-mysitemyway/icons/legacy-previews/icons/blue-tiedyed-cloth-icons-alphanumeric/070052-blue-tiedyed-cloth-icon-alphanumeric-vertical-line.png",
+                src: "http://cdn.mysitemyway.com/etc-mysitemyway/icons/legacy-previews/icons/blue-tiedyed-cloth-icons-alphanumeric/070052-blue-tiedyed-cloth-icon-alphanumeric-vertical-line.png",
                 width: 100,
                 height: 100
               }
@@ -360,7 +359,7 @@ function getWeather() {
       toggleTemperature();
       displayMessage();
       displayBackground();
-    }).fail(function(jqxhr, textStatus, error) {
+    }).fail(function (jqxhr, textStatus, error) {
       var err = textStatus + ", " + error;
       console.log("Request Failed: " + err);
     });
@@ -389,7 +388,7 @@ function getWeather() {
   navigator.geolocation.getCurrentPosition(getPosition, showError);
 } //End function getWeather()
 
-$(document).ready(function() {
+$(document).ready(function () {
   $("#card")
     .hide()
     .delay(1500)
